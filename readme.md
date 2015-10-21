@@ -55,6 +55,8 @@ event_id    int     index(Event_detail ->id)
 user_id     int     index(Users->id)
 
 ## Widgets ##
+|COLUMN      |TYPE            |Index|
+|-----------------------------------|
 |id          |int             |autoinc(PK)|
 |title       |varchar(30)     |/|
 |beschr      |memo            |/|
