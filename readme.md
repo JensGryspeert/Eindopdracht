@@ -55,8 +55,8 @@ event_id    int     index(Event_detail ->id)
 user_id     int     index(Users->id)
 
 ## Widgets ##
-id          int             autoinc(PK)
-title       varchar(30)     /
-beschr      memo            /
-button_text varchar(15)     /
-linkurl     varchar(255)    /
+|id          |int             |autoinc(PK)|
+|title       |varchar(30)     |/|
+|beschr      |memo            |/|
+|button_text |varchar(15)     |/|
+|linkurl     |varchar(255)    |/|
