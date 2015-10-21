@@ -4,9 +4,8 @@
 2.  Event_Detail
 3.  Agenda
 4.  Contact
-5.  Archive
-6.  Events_Registered
-7.  Widgets
+5.  Events_Registered
+6.  Widgets
 
 ### Users ###
 |COLUMN      |TYPE            |Index|
