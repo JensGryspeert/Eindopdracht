@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Java Webcafe</title>
+        
+        <link href="css/webcafe_layout.css" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+        
+            
+        
+<header>
+    <section id="innerHeader">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="archive.html">Archive</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <ul class="stats">
+            <li>Stats:
+                <ol>
+                    <li>Users loggedIn: -1</li>
+                    <li>Active Sessions: 0</li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+    
+
+</header>
+        <section id="contentContainer">
+            <section id="social" style="float:right; width:400px;">
+                <div class="socialJoin" style="background:transparent url('images/socialJoin.png'); width:286px; height:34px;float:left;">
+                </div>
+                <a href="http://www.facebook.com" target="_blank" style="margin:1em 0.5em;background:transparent url('images/soc_facebook.png') no-repeat;float:left;display:block; width:38px;height:38px;"><span class="imgUrl">Facebook</span></a>
+                <a href="http://www.twitter.com" target="_blank" style="margin:1em 0.5em;background:transparent url('images/soc_twitter.png') no-repeat;float:left;display:block; width:38px;height:38px;"><span class="imgUrl">Twitter</span></a>
+            </section>
+            <section id="top">
+                <img src="images/webcafe_beer.png" alt="miep"/>
+                <section>
+                    <h1>Informal</h1>
+                    <span class="subtitle">tech meet up</span>
+                    <p>
+                        Industry updates, tech news, great cases, networking and exploring something different... <br/>like: How do you brew beer?
+                    </p>
+                </section>			
+            </section>
+            <section id="middle">		
+                <section class="overview">
+                    <h2 style="color:#848c30">Contact Us</h2>
+                    <div class="border"></div>
+                    <form method="post">
+                        <input type="hidden" name="type" value="contact"/>
+                        <ul style="line-height:200%">
+                            <li><input name="name" required type="text" placeholder="Name *" class="input"></li>
+                            <li><input name="email" required type="email" class="input" placeholder="E-mail *"></li>
+                            <li><textarea required name="message" class="input" placeholder="Message *"></textarea></li>
+                            <li><button class="button normalButton" >Ok</button></li>
+                        </ul> 
+                        <div style="clear:right;"></div>
+                    </form>
+                    <a id="bring-a-case"></a>
+                    <h2 style="color:#848c30">Do you have a case that you want to bring?</h2>
+                    <div class="border"></div>
+                    <form method="post">
+                        <input type="hidden" name="type" value="bring-a-case"/>
+                        <ul style="line-height:200%">
+                            <li><input required type="text" name="name" placeholder="Name *" class="input"></li>
+                            <li><input required type="email" name="email" class="input" placeholder="E-mail *"></li>
+                            <li><textarea required class="input" name="message" placeholder="Message *"></textarea></li>
+                            <li><button class="button normalButton">Ok</button></li>
+                        </ul>
+                    </form>
+                    <div style="clear:left;"></div>
+                </section>
+                <aside class="widgets">
+                    
+
+
+
+
+
+
+
+
+
+<section id="upcoming">
+    <h3>Upcoming Webcafé</h3>
+    <ul>
+        <li>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </li>
+        <li>
+            <ol>
+                <li>
+                    <span class="bold">Venue</span> : The Studios
+                </li>
+                <li>Graaf Karel De Goedelaan 38</li>
+                <li>
+                    8500 Kortrijk
+                </li>
+            </ol>
+        </li>
+        <li>
+            <ol>
+                <li>
+                    <span class="bold">When</span> : 10/11/2015
+                </li>
+                <li><span class="bold">What time</span> : 08h - 10h</li>
+                <li>Fee: free</li>
+                <li><span class="bold">For who</span> : developers, entrepreneurs</li>
+            </ol>
+        </li>
+    </ul>
+    <div class="button cap semiButton"><a href="login.html">Register Now!</a></div>
+    <div style="clear:right;"></div>
+</section>
+                    <section id="suggestACase">
+                        <h3>Suggest a case</h3>
+                        <p>Did you launch a great project recently? Or do you know somebody that developed greatness for web, touch, desktop or mobile? Suggest a case and maybe you will bring a story on one of the following Java Webcafés! 
+                        </p>
+                        <div class="button semiButton" ><a href="contact.html#bring-a-case">Bring a case!</a></div>
+                        <div style="clear:right;"></div>
+                    </section>
+                </aside>
+            </section>
+        </section>
+        <footer>		
+            <a class="dukeofjava"><span class="imgUrl">Sun</span></a>
+            <section id="innerFooter">
+                <div id="slogan">
+                    <nav>
+                        <a class="vives"><span class="imgUrl">vives</span></a>
+                        <a class="java"><span class="imgUrl">Java</span></a>
+                        <a class="sun"><span class="imgUrl">Sun</span></a>				
+                    </nav>
+                </div>
+            </section>
+        </footer>
+    </body>
+</html>

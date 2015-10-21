@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <title>Java Webcafe</title>
+        
+        <link href="css/webcafe_layout.css" rel="stylesheet" media="screen"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvzVOS6GfER7BfDOz944b0VaOKmFuyZQ8&sensor=true"
+        type="text/javascript"></script>
+        <script type="text/javascript">
+            var geocoder = new google.maps.Geocoder();;
+
+            var createStandardGoogleMap = function(){
+                //------- Google Maps ---------//
+                geocoder = new google.maps.Geocoder();
+
+                // Creating a LatLng object containing the coordinate for the center of the map
+                
+
+                // Creating an object literal containing the properties we want to pass to the map
+                var options = {
+                    zoom: 15, // This number can be set to define the initial zoom level of the map
+                    center: null,
+                    mapTypeId: google.maps.MapTypeId.TERRAIN // This value can be set to define the map type ROADMAP/SATELLITE/HYBRID/TERRAIN
+                };
+                // Calling the constructor, thereby initializing the map
+                var map = new google.maps.Map(document.getElementById('google_map'), options);
+
+                // Define Marker properties
+                var image = new google.maps.MarkerImage('images/webcafe_marker.png',
+                // This marker is 129 pixels wide by 42 pixels tall.
+                new google.maps.Size(129, 42),
+                // The origin for this image is 0,0.
+                new google.maps.Point(0,0),
+                // The anchor for this image is the base of the flagpole at 18,42.
+                new google.maps.Point(18, 42)
+                
+            );
+
+               
+                
+                var address = $("#google_map").attr('address');
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location,
+                            icon:image
+                        });
+                    } else {
+                        //alert("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            };
+            var directionsService = new google.maps.DirectionsService();
+            var directionsDisplay;
+            var createDirectedGoogleMap = function(latitude, longitude){
+                directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+                var settings = {
+                    zoom: 15,
+                    center: null,
+                    mapTypeControl: true,
+                    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+                    navigationControl: true,
+                    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+                    mapTypeId: google.maps.MapTypeId.TERRAIN
+                };
+                
+                // Calling the constructor, thereby initializing the map
+                var map = new google.maps.Map(document.getElementById('google_map'), settings);
+                directionsDisplay.setMap(map);
+                // Define Marker properties
+                var image = new google.maps.MarkerImage('images/webcafe_marker.png',
+                // This marker is 129 pixels wide by 42 pixels tall.
+                new google.maps.Size(129, 42),
+                // The origin for this image is 0,0.
+                new google.maps.Point(0,0),
+                // The anchor for this image is the base of the flagpole at 18,42.
+                new google.maps.Point(18, 42));
+                var address = $("#google_map").attr('address');
+                var start = ""+latitude+","+longitude;
+                var end = address;
+                var request = {
+                    origin:start,
+                    destination:end,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                };
+                directionsService.route(request, function(response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                        var leg = response.routes[ 0 ].legs[ 0 ];
+                        new google.maps.Marker({
+                            map: map,
+                            position: leg.end_location,
+                            icon:image
+                        });
+                    }
+                    console.debug(status);
+                });
+
+            };
+            
+            $(document).ready(function() {
+                if (navigator.geolocation) 
+                {
+                    navigator.geolocation.getCurrentPosition( 
+
+                    function (position) {  
+
+                        // Did we get the position correctly?
+                        // alert (position.coords.latitude);
+
+                        // To see everything available in the position.coords array:
+                        // for (key in position.coords) {alert(key)}
+                        createDirectedGoogleMap(position.coords.latitude, position.coords.longitude);
+
+                    }, 
+                    // next function is the error callback
+                    function (error)
+                    {
+                        
+                        alert(error);
+                        createStandardGoogleMap();
+                    }
+                );
+                }
+                else{
+                    createStandardGoogleMap();
+                }
+
+            });
+        </script>
+    </head>
+    <body>
+        
+            
+        
+<header>
+    <section id="innerHeader">
+        <nav>
+            <a href="http://localhost:8080/LabWEJ_herexamen_webcafe_opl">Home</a>
+            <a href="http://localhost:8080/LabWEJ_herexamen_webcafe_opl/FAQ">FAQ</a>
+            <a href="http://localhost:8080/LabWEJ_herexamen_webcafe_opl/Archive">Archive</a>
+            <a href="http://localhost:8080/LabWEJ_herexamen_webcafe_opl/Contact">Contact</a>
+        </nav>
+        <ul class="stats">
+            <li>Stats:
+                <ol>
+                    <li>Users loggedIn: -1</li>
+                    <li>Active Sessions: -1</li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+    
+
+</header>
+        <section id="contentContainer">
+
+            <section id="social">
+                <div class="socialJoin">
+                </div>
+                <a href="http://www.facebook.com" class="facebook" target="_blank"><span class="imgUrl">Facebook</span></a>
+                <a href="http://www.twitter.com" target="_blank" class="twitter"><span class="imgUrl">Twitter</span></a>
+            </section>
+            <section id="top">
+                <img src="images/webcafe_beer.png" alt="beer"/>
+                <section>
+                    <h1>Informal</h1>
+                    <span class="subtitle">tech meet up</span>
+                    <p>
+                        Industry updates, tech news, great cases, networking and exploring something different... <br/>like: How do you brew beer?
+                    </p>
+                </section>			
+            </section>
+
+            <section id="middle">		
+
+                <section class="overview" >
+                    <article>
+                        <h2>The Studios <span class="subtitle"> </span></h2>
+                        <div class="border"></div>
+                        <section class="content-left">
+                            <img width="250" height="200"style="margin-top:0.5em" src="images/data/events/thumb-1634715442616626783_6448e1de-74c1-4637-bfff-35cc7df8d801.jpg">
+                        </section>
+                        <section class="content-right">
+                            <!-- Naam van de locatie waar het event plaatsvindt 
+                                in volgend formaat mee te geven:
+                                Graaf Karel De Goedelaan 38, 8500 Kortrijk, West-Vlaanderen
+                            -->
+                            
+                            <!-- Plaats hier onder in het attribuut 'addres' het adres in het bovenvermeld formaat -->
+                            <div id="google_map" address="Graaf Karel De Goedelaan 38, 8500 Kortrijk, West-Vlaanderen"></div>
+                        </section>
+                        <div style="clear:both"></div>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+
+                    </article>
+                    <article>
+                        <h2>Agenda:</h2>
+                        <ul class="agenda">
+                            <!-- 
+                                Geef alle agenda items weer voor dit bepaalde event. 
+                                
+                            -->
+                            
+                                <li>
+                                    08.00h - 08.10h : Spring into the Cloud
+                                    <p></p>
+                                </li>
+
+                            
+                                <li>
+                                    08.10h - 08.20h : Continuous Delivery
+                                    <p></p>
+                                </li>
+
+                            
+                        </ul>
+                    </article>
+                    <article>
+                        <h2>Venue</h2>
+                        <div class="border"></div>
+                        <ul class="venue">
+                            <li> 
+                                <ol>
+                                    <ol>
+                                        <li>
+                                            <span class="bold">Venue </span>: <!-- Naam van de locatie waar het event plaatsvindt --> The Studios
+                                        </li>
+                                        <li>
+                                            <!-- Hier moet het adres terecht komen van het event -->Graaf Karel De Goedelaan 38
+                                        </li>
+                                        <li>
+                                            <!-- de postcode van de stad  --> Kortrijk
+                                        </li>
+                                    </ol>
+                            </li>
+                            <li>
+                                <ol>
+                                    <li>
+                                        <span class="bold">When </span>: <!-- de datum waarop het event plaatsvind in volgend formaat: 08/06/2012 -->10/11/2015
+                                    </li>
+                                    <li>
+                                        <span class="bold">What time</span>: <!-- De duur van het event adhv start en eindtijd, alsvolgt weergegeven: 14h - 15h -->08h - 10h 
+                                    </li>
+                                    <li>
+                                        <span class="bold">Fee</span>: <!-- Indien er het om een gratis event gaat dient er 'free' afgedrukt te worden 
+                                                                       op het scherm. Indien er een bedrag dient betaald te worden bij het binnenkomen 
+                                                                       dan dient het bedrag alsvolgt weergegeven te worden: &euro; 10 -->free
+                                    </li>
+                                    <li>
+                                        <span class="bold">For who</span>: <!-- Graag hadden we ook noge aangeduid voor wie een bepaald event interessant kan zijn-->developers, entrepreneurs
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                </section>
+                <aside class="widgets">
+                    <!-- 
+                        Afhankelijk van het aantal beschikbare plaatsen  geven 
+                        we, ofwel de upcomingRegisterWidget, ofwel de upcomingWidget weer.
+                        De upcomingRegisterWidget is beschikbaar wanneer men zich 
+                        voor het event dat momenteel bekeken wordt, nog steeds kan inschrijven.
+                        Ga even na wat we terug kunnen vinden in onze bean,
+                        misschien kan dit object ons voor dit onderdeel op weg helpen...
+                        
+                    -->
+                    
+                        
+                            
+
+
+
+
+
+
+
+
+
+<section>
+    <h3>Are you joining us too?</h3>
+    <ul id="registerUpcoming">
+        
+            <li>
+                <img src="images/data/profiles/48392d63-6d65-4a0d-89f1-1c7ffe1c983b.jpg" alt="kasper cools"/>
+            </li>            
+        
+        
+        <div style="clear:both"></div>
+
+    </ul>
+    
+        <div class="button cap semiButton"><a href="RegisterEvent?event=90">Register Now!</a></div>
+        
+        
+    
+    <div style="clear:right;"></div>
+</section>
+                        
+                        
+                    
+
+                    <section id="suggestACase">
+                        <h3>Suggest a case</h3>
+                        <p>Did you launch a great project recently? Or do you know somebody that developed greatness for web, touch, desktop or mobile? Suggest a case and maybe you will bring a story on one of the following Java Webcafés! 
+                        </p>
+                        <div class="button cap semiButton" ><a href="Contact">Bring a case!</a></div>
+                        <div style="clear:right;"></div>
+                    </section>
+                </aside>
+            </section>
+        </section>
+        <footer>
+            <a class="dukeofjava"><span class="imgUrl">Sun</span></a>
+            <section id="innerFooter">
+                <div id="slogan">
+                    <nav>
+                        <a class="vives"><span class="imgUrl">vives</span></a>
+                        <a class="java"><span class="imgUrl">Java</span></a>
+                        <a class="sun"><span class="imgUrl">Sun</span></a>				
+                    </nav>
+                </div>
+            </section>
+        </footer>
+    </body>
+</html>

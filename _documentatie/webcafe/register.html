@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <title>Java Webcafe</title>
+        <link href="css/webcafe_layout.css" rel="stylesheet" media="screen"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
+        <script src="js/jQuery.fileinput.js" type="text/javascript"></script>
+    </head>
+    <body>
+        
+            
+        
+<header>
+    <section id="innerHeader">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="archive.html">Archive</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <ul class="stats">
+            <li>Stats:
+                <ol>
+                    <li>Users loggedIn: -1</li>
+                    <li>Active Sessions: 0</li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+    
+
+</header>
+        <section id="contentContainer">
+            <section id="social">
+                <div class="socialJoin">
+                </div>
+                <a href="http://www.facebook.com" class="facebook" target="_blank"><span class="imgUrl">Facebook</span></a>
+                <a href="http://www.twitter.com" target="_blank" class="twitter"><span class="imgUrl">Twitter</span></a>
+            </section>
+            <section id="top">
+                <img src="images/webcafe_beer.png" alt="beer"/>
+                <section>
+                    <h1>Informal</h1>
+                    <span class="subtitle">tech meet up</span>
+                    <p>
+                        Industry updates, tech news, great cases, networking and exploring something different... <br/>like: How do you brew beer?
+                    </p>
+                </section>			
+            </section>
+
+            <section id="middle">		
+                <section class="overview" >
+                    <h2>Register<span class="subtitle"></span></h2>
+                    <div class="border"></div>
+                    <form id="register" method="post" action="Register" enctype="multipart/form-data">
+                        <input type="hidden" id="event" name="eventId" value="90"/>
+                        <ul>
+                            <li>
+                                <label for="email">Email: </label><input id="email" type="email" required name="email" value=""/>
+                                
+                            </li>
+
+                            <li><label for="pwd">Password: </label><input id="pwd" type="password" required name="pwd"/></li>
+                            <li><label for="name">Name: </label><input id="name" type="text" required name="name" value=""/></li>
+                            <li><label for="forename">Forename: </label><input id="forename" type="text" required name="forename" value=""/></li>
+                            <li><label for="bdate">Birthdate: </label><input id="bdate" type="text" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}" placeholder="dd/mm/yyyy" required name="bdate" value=""/></li>
+                            <li><label for="firm">Firm: </label><input id="firm" type="text" name="firm"/></li>
+                            <li><label for="function">Function: </label><input id="function" type="text" name="function" /></li>
+                            <li>
+                                <label>Photo: </label><input id="image"  type="file" name="file" required/>
+                            </li>
+                            <li><input type="submit" value="Register"/></li>
+                        </ul>
+                    </form>
+                </section>
+                <aside class="widgets">
+<section>
+    <h3>Are you joining us too?</h3>
+    <ul id="registerUpcoming">
+        
+            <li>
+                <img src="images/data/profiles/48392d63-6d65-4a0d-89f1-1c7ffe1c983b.jpg" alt="kasper cools"/>
+            </li>            
+        
+        
+        <div style="clear:both"></div>
+
+    </ul>
+    
+        <div class="button cap semiButton"><a href="RegisterEvent?event=90">Register Now!</a></div>
+        
+        
+    
+    <div style="clear:right;"></div>
+</section>
+                        
+                        
+                    
+
+                    <section id="suggestACase">
+                        <h3>Suggest a case</h3>
+                        <p>Did you launch a great project recently? Or do you know somebody that developed greatness for web, touch, desktop or mobile? Suggest a case and maybe you will bring a story on one of the following Java Webcafés! 
+                        </p>
+                        <div class="button cap semiButton" ><a href="Contact">Bring a case!</a></div>
+                        <div style="clear:right;"></div>
+                    </section>
+                </aside>
+            </section>
+        </section>
+        
+
+<footer>		
+    <a class="dukeofjava"><span class="imgUrl">Sun</span></a>
+    <section id="innerFooter">
+        <div id="slogan">
+            <nav>
+                <a class="katho" href="http://www.vives.be" target="_blank"><span class="imgUrl">Vives</span></a>
+                <a class="java" ><span class="imgUrl">Java</span></a>
+                <a class="sun"><span class="imgUrl">Sun</span></a>				
+            </nav>
+        </div>
+    </section>
+</footer>
+    </body>
+</html>
