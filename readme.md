@@ -18,7 +18,7 @@
 |firm        |varchar(30)         |-|
 |function    |varchar(30)         |-|
 |photo       |varchar(255)        |-|
-|email       |varchar(255)        unique|
+|email       |varchar(255)        |unique|
 |password    |varchar(255)->MD5   |-|
 |loggedIn    |tinybit             |-|
 |created_at  |datetime            |NOW()|
@@ -68,7 +68,7 @@
 |COLUMN      |TYPE            |Index|
 |------------|----------------|-----|
 |id          |int             |autoinc(PK)|
-|title       |varchar(30)     |/|
-|beschr      |memo            |/|
-|button_text |varchar(15)     |/|
-|linkurl     |varchar(255)    |/|
+|title       |varchar(30)     |-|
+|beschr      |memo            |-|
+|button_text |varchar(15)     |-|
+|linkurl     |varchar(255)    |-|
