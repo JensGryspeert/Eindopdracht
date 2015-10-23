@@ -3,8 +3,7 @@
 1.  Users
 2.  Event_Detail
 3.  Agenda
-4.  Contact
-5.  Events_Registered
+4.  Events_Registered
 
 ### Users ###
 |COLUMN      |TYPE            |Index|
@@ -49,14 +48,6 @@
 |omschr              |memo                |-|
 |created_at          |datetime            |NOW()|
 |updated_at          |datetime            |NOW()-->method update|
-
-### Contact ###
-|COLUMN      |TYPE            |Index|
-|------------|----------------|-----|
-|id          |int             |autoinc(PK)|
-|name        |varchar(50)     |-|
-|beschr      |memo            |-|
-|created_at  |datetime        |NOW()
 
 ### Events_Registered ###
 |COLUMN      |TYPE            |Index|
