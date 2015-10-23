@@ -5,7 +5,6 @@
 3.  Agenda
 4.  Contact
 5.  Events_Registered
-6.  Widgets
 
 ### Users ###
 |COLUMN      |TYPE            |Index|
@@ -34,7 +33,8 @@
 |fee         |varchar(30)         |-|
 |for_who     |varchar(255)        |-|    
 |omschijving |memo                |-|
-|agenda_id   |int                 |index(Agenda->agenda_id)|
+|user_id     |int                 |index(Users->id|
+|agenda_id   |int                 |index(Agenda->id)|
 |created_at  |datetime            |NOW()|
 |updated_at  |datetime            |NOW()-->method update|
 
@@ -45,6 +45,8 @@
 |event_detail_id     |int                 |index(event_detail->id)|
 |beg_uur             |unixstamp           |-|
 |eind_uur            |unixstamp           |-|
+|topic               |varchar(30)         |-|
+|omschr              |memo                |-|
 |created_at          |datetime            |NOW()|
 |updated_at          |datetime            |NOW()-->method update|
 
@@ -62,12 +64,3 @@
 |id          |int     |autoinc(PK)|
 |event_id    |int     |index(Event_detail ->id)|
 |user_id     |int     |index(Users->id)|
-
-### Widgets ###
-|COLUMN      |TYPE            |Index|
-|------------|----------------|-----|
-|id          |int             |autoinc(PK)|
-|title       |varchar(30)     |-|
-|beschr      |memo            |-|
-|button_text |varchar(15)     |-|
-|linkurl     |varchar(255)    |-|
