@@ -4,6 +4,7 @@
 2.  Event_Detail
 3.  Agenda
 4.  Events_Registered
+5.  Tags
 
 ### Users ###
 |COLUMN      |TYPE            |Index|
@@ -18,6 +19,7 @@
 |email       |varchar(255)        |unique|
 |password    |varchar(255)->MD5   |-|
 |loggedIn    |tinybit             |-|
+|tag_id      |int                 |-|
 |created_at  |datetime            |NOW()|
 |updated_at  |datetime            |NOW()-->method update|
 
@@ -53,5 +55,13 @@
 |COLUMN      |TYPE            |Index|
 |------------|----------------|-----|
 |id          |int     |autoinc(PK)|
+|max_aant    |int     |-|
 |event_id    |int     |index(Event_detail ->id)|
+|agenda_id   |int     |index(agenda->id)
 |user_id     |int     |index(Users->id)|
+
+### Tags ###
+|COLUMN      |TYPE            |Index|
+|------------|----------------|-----|
+|id          |int     |autoinc(PK)|
+|title       |String  |-|
