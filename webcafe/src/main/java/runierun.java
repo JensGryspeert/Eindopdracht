@@ -22,10 +22,13 @@ public class runierun {
         //Users user1 = new Users("test", "testiie", "19940629", "Hitek", "Directeur", "/../img/lekker.jpg", "jensgryspeert@mail.com", "passwoord", true);
         //userdao.insertUser(user1);
         
+ 
         // Updaten van een user
-        Users user1 = userdao.findById(1);
-        user1.setName("Jefke");
-        userdao.updateUser(user1);
+        //Users user1 = userdao.findById(1);
+        //user1.setName("Mario");
+        //user1.setForename("Van Corselis");
+        //userdao.updateUser(user1);
+        
         // sluiten van connectie
         userdao.close();
     }

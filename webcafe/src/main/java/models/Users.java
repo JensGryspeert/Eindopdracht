@@ -6,6 +6,7 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 import org.joda.time.DateTime;
 
@@ -16,38 +17,46 @@ import org.joda.time.DateTime;
 @Entity
 @Table(name = "Users")
 public class Users {
-    
+
     /* Declaring of variables */
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "id")
-       private int id;
-    @Column(name = "name")
-        private String name;
-    @Column(name = "forename")
-        private String forename;
+    private int id;
+    @Column(name = "name", length = 30)
+    private String name;
+    @Column(name = "forename", length = 50)
+    private String forename;
     @Column(name = "birthdate")
-        private String birthdate;
+    private Date birthdate;
     @Column(name = "firm")
-        private String firm;
-    @Column(name = "function")
-        private String function;
+    private String firm;
+    @Column(name = "function", length = 50)
+    private String function;
     @Column(name = "photo")
-        private String photo;
-    @Column(name = "email")
-        private String email;
+    private String photo;
+    @Column(name = "email", length = 50)
+    private String email;
     @Column(name = "password")
-        private String password;
+    private String password;
     @Column(name = "loggedIn")
-        private boolean loggedIn;
+    private boolean loggedIn;
+    @Column(name = "isAdmin")
+    private boolean isAdmin;
+    /*@Column(name = "tag_id")
+     private int tagId; */
     @Column(name = "createdAt", columnDefinition = "DateTime")
-        private Date createdAt;
-        
+    private Date createdAt;
+
     @Column(name = "updatedAt", columnDefinition = "DateTime")
-        private Date updatedAt;
+    private Date updatedAt;
     
-   
+    @ManyToOne
+    @JoinColumn(name="user_id", referencedColumnName="id")
+    private EventDetails eventdetails;
+    
     /* Constructor */
-    public Users(String name, String forename, String birthdate, String firm, String function, String photo, String email, String password, boolean loggedIn){
+    public Users(String name, String forename, Date birthdate, String firm, String function, String photo, String email, String password, boolean loggedIn) {
         this.name = name;
         this.forename = forename;
         this.birthdate = birthdate;
@@ -56,13 +65,14 @@ public class Users {
         this.photo = photo;
         this.email = email;
         this.password = password;
-        this.loggedIn = loggedIn;
-        this.createdAt =  DateTime.now().toDate();
+        this.loggedIn = false;
+        this.isAdmin = false;
+        this.createdAt = DateTime.now().toDate();
         this.updatedAt = DateTime.now().toDate();
     }
-    
-    public Users(){
-        
+
+    public Users() {
+
     }
     /* Getters and Setters */
 
@@ -90,11 +100,11 @@ public class Users {
         this.forename = forename;
     }
 
-    public String getBirthdate() {
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -161,7 +171,13 @@ public class Users {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
-    
-    
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
 }

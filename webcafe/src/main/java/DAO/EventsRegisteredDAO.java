@@ -10,58 +10,58 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import models.*;
+import models.EventDetails;
+import models.Events_Registered;
 import org.joda.time.DateTime;
+
 /**
  *
  * @author joycee
  */
-public class UsersDAO extends BaseDAO{
-EntityManager em;
-    public UsersDAO(){
+public class EventsRegisteredDAO extends BaseDAO{
+    EntityManager em;
+    public EventsRegisteredDAO() {
         em = emf.createEntityManager();
     }
     
-    public List<Users> findAll(){
+    
+    public List<Events_Registered> findAll() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Users> cq = cb.createQuery(Users.class);
-        cq.from(Users.class);
-        TypedQuery<Users> q = em.createQuery(cq);
+        CriteriaQuery<Events_Registered> cq = cb.createQuery(Events_Registered.class);
+        cq.from(Events_Registered.class);
+        TypedQuery<Events_Registered> q = em.createQuery(cq);
         return q.getResultList();
     }
-    
-    public Users findById(int id){
-        return em.find(Users.class, id);
-    }
-    public void insertUser(Users user){
-        em.getTransaction().begin();
-        em.persist(user);
-        em.getTransaction().commit();
-    }
-    public void updateUser(Users user){
-        em.getTransaction().begin();
-        user.setUpdatedAt(DateTime.now().toDate());
-        em.getTransaction().commit();
+
+    public Events_Registered findById(int id) {
+        return em.find(Events_Registered.class, id);
     }
     
-    public void setUserAdmin(Users user){
+    
+    public void insertRegisteredUser(Events_Registered er) {
         em.getTransaction().begin();
-        user.setIsAdmin(true);
-        user.setUpdatedAt(DateTime.now().toDate());
+        em.persist(er);
         em.getTransaction().commit();
     }
-    
-    public void deleteUser(Users user){
+
+    public void updateRegisteredUser(Events_Registered er) {
         em.getTransaction().begin();
-        em.remove(user);
         em.getTransaction().commit();
     }
-    
+
+    public void deleteRegisteredUser(Events_Registered er) {
+        em.getTransaction().begin();
+        em.remove(er);
+        em.getTransaction().commit();
+    }
+
     @Override
-    public void close(){
-        if(em!=null){
+    public void close() {
+        if (em != null) {
             em.close();
             super.close();
         }
-    }    
+    }
+    
+
 }
